@@ -19,7 +19,7 @@ public class Buffer {
    private int pins = 0;
    private int modifiedBy = -1;  // negative means not modified
    private int logSequenceNumber = -1; // negative means no corresponding log record
-
+    int counter;
    /**
     * Creates a new buffer, wrapping a new 
     * {@link simpledb.file.Page page}.  
@@ -155,6 +155,26 @@ public class Buffer {
     * @param txnum the id of the transaction
     * @return true if the transaction modified the buffer
     */
+   
+   /*
+        Modified by DBMasterMinds
+   
+   */
+   
+   public void setCounter(){
+       counter = 5;
+   }
+   
+   //public void unsetCounter(){
+       
+     //  counter= 0;
+  // }
+   
+   /*
+        Modified by DBMasterMinds
+   
+   */
+   
    boolean isModifiedBy(int txnum) {
       return txnum == modifiedBy;
    }

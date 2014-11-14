@@ -1,7 +1,7 @@
 package simpledb.buffer;
 
 import simpledb.file.*;
-
+import simpledb.buffer.ClockReplacementPolicy.*;
 /**
  * Manages the pinning and unpinning of buffers to blocks.
  * @author Edward Sciore
@@ -10,7 +10,7 @@ import simpledb.file.*;
 class BasicBufferMgr {
    private Buffer[] bufferpool;
    private int numAvailable;
-   
+   private ClockReplacementPolicy replacementPolicy;
    /**
     * Creates a buffer manager having the specified number 
     * of buffer slots.
@@ -61,6 +61,7 @@ class BasicBufferMgr {
       if (!buff.isPinned())
          numAvailable--;
       buff.pin();
+      buff.setCounter();
       return buff;
    }
    
